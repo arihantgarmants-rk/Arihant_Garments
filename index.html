@@ -250,6 +250,19 @@
     @keyframes waRing { 0%,100% { box-shadow: 0 4px 22px rgba(37,211,102,.5); } 50% { box-shadow: 0 4px 36px rgba(37,211,102,.8); } }
     @keyframes waRipple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2); opacity: 0; } }
 
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; z-index: 300; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,14,71,.97); z-index: 250; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 24px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 12px 32px; border-radius: 10px; transition: all .2s; letter-spacing: .04em; }
+    .mobile-menu a.active { color: var(--gold); background: rgba(251,191,36,.12); }
+    .mobile-menu a:not(.active):hover { background: rgba(255,255,255,.08); }
+    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       /* Topbar */
@@ -261,6 +274,7 @@
       /* Header */
       .header-inner { padding: 0 12px; height: 58px; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       .brand-tag { display: none; }
       .brand-name { font-size: 18px; }
 
@@ -329,8 +343,19 @@
       <a href="contact.html">Contact Us</a>
     </nav>
     <a class="btn-header" href="https://docs.google.com/forms/d/e/1FAIpQLSd7YoH5uTGzDw0mE9gpK6svQej62vKDrIq92p5Keor1eyRlYg/viewform?usp=header" target="_blank">✨ Send Enquiry</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose">✕</button>
+  <a href="index.html" class="active">🏠 Home</a>
+  <a href="products.html">👕 Products</a>
+  <a href="contact.html">📬 Contact Us</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -447,5 +472,13 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.549 4.107 1.513 5.833L.057 23.215a.75.75 0 0 0 .729.946.749.749 0 0 0 .199-.027l5.578-1.488A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-5.018-1.394.75.75 0 0 0-.497-.093l-3.756 1.003 1.003-3.666a.75.75 0 0 0-.103-.624A9.72 9.72 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25c5.384 0 9.75 4.365 9.75 9.75 0 5.384-4.366 9.75-9.75 9.75z"/></svg>
 </a>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
 </body>
 </html>

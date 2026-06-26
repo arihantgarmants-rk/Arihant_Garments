@@ -187,9 +187,22 @@
     @keyframes waRipple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2); opacity: 0; } }
 
     /* ── RESPONSIVE ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; z-index: 300; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,14,71,.97); z-index: 250; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 24px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 12px 32px; border-radius: 10px; transition: all .2s; letter-spacing: .04em; }
+    .mobile-menu a.active { color: var(--gold); background: rgba(251,191,36,.12); }
+    .mobile-menu a:not(.active):hover { background: rgba(255,255,255,.08); }
+    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; }
+
     @media (max-width: 768px) {
       .topbar-left { display: none; }
       .nav-links { display: none; }
+      .hamburger { display: flex; }
       .brand-tag { display: none; }
       .brand-name { font-size: 15px; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -229,8 +242,19 @@
       <a href="contact.html">Contact Us</a>
     </nav>
     <a class="btn-header" href="https://docs.google.com/forms/d/e/1FAIpQLSd7YoH5uTGzDw0mE9gpK6svQej62vKDrIq92p5Keor1eyRlYg/viewform?usp=header" target="_blank">✨ Send Enquiry</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose">✕</button>
+  <a href="index.html">🏠 Home</a>
+  <a href="products.html" class="active">👕 Products</a>
+  <a href="contact.html">📬 Contact Us</a>
+</div>
 
 <!-- PAGE BANNER -->
 <div class="page-banner">
@@ -391,6 +415,14 @@
     dots.forEach((d,i) => d.addEventListener('click', () => go(i)));
     setInterval(() => go(cur + 1), 3000);
   });
+</script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
 </script>
 </body>
 </html>
