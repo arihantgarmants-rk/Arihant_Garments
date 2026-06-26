@@ -210,7 +210,12 @@
     .mobile-menu-close { display: none; }
 
     @media (max-width: 768px) {
+      .topbar { padding: 6px 12px; flex-wrap: nowrap; }
       .topbar-left { display: none; }
+      .topbar-right { flex-wrap: nowrap; justify-content: flex-end; width: 100%; }
+      .topbar-right a { font-size: 11px; }
+      .topbar-right a:nth-child(2), .topbar-right a:nth-child(3) { display: none; }
+      body { padding-top: 92px; }
       .nav-links { display: none; }
       .hamburger { display: none; }
       .btn-header { display: none; }
@@ -219,6 +224,9 @@
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .cbtn { font-size: 11px; padding: 8px 4px; }
       .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+      .page-banner { overflow-x: hidden; width: 100%; }
+      .page-banner h2 { font-size: 26px; padding: 0 12px; flex-wrap: wrap; justify-content: center; word-break: break-word; }
+      .page-banner p { word-break: break-word; padding: 0 12px; }
     }
   </style>
 </head>
