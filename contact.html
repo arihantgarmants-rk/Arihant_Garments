@@ -239,11 +239,9 @@
     @keyframes waRipple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2); opacity: 0; } }
 
     /* ── RESPONSIVE ── */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px 12px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; z-index: 300; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .hamburger { display: none; align-items: center; justify-content: center; cursor: pointer; padding: 8px 14px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; z-index: 300; color: #fff; font-size: 22px; line-height: 1; transition: background .2s; }
+    .hamburger:hover { background: rgba(255,255,255,.22); }
+    .hamburger.open { background: rgba(251,191,36,.2); border-color: rgba(251,191,36,.5); }
     .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,14,71,.97); z-index: 250; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { color: #fff; text-decoration: none; font-size: 24px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 12px 32px; border-radius: 10px; transition: all .2s; letter-spacing: .04em; }
@@ -296,9 +294,7 @@
       <a href="contact.html" class="active">Contact Us</a>
     </nav>
     <a class="btn-header" href="https://docs.google.com/forms/d/e/1FAIpQLSd7YoH5uTGzDw0mE9gpK6svQej62vKDrIq92p5Keor1eyRlYg/viewform?usp=header" target="_blank">✨ Send Enquiry</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
   </div>
 </header>
 
@@ -436,9 +432,9 @@
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const menuClose = document.getElementById('menuClose');
-  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
-  menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+  hamburger.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open'); hamburger.textContent = open ? '✕' : '☰'; });
+  menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; }));
 </script>
 </body>
 </html>
