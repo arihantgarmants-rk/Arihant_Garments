@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
     :root {
       --navy:  #0f0e47;
       --navy2: #1a1880;
@@ -251,12 +252,49 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      /* Topbar */
+      .topbar { padding: 6px 12px; gap: 4px; }
       .topbar-left { display: none; }
+      .topbar-right { gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
+      .topbar-right a { font-size: 11px; }
+
+      /* Header */
+      .header-inner { padding: 0 12px; height: 58px; }
       .nav-links { display: none; }
       .brand-tag { display: none; }
-      .brand-name { font-size: 15px; }
-      .hero h2 { font-size: 32px; }
+      .brand-name { font-size: 18px; }
+
+      /* Hero */
+      .hero { padding: 48px 16px 36px; }
+      .hero h2 { font-size: 28px; line-height: 1.25; }
+      .hero p { font-size: 15px; }
+      .hero-sub2, .hero-sub3 { font-size: 14px; }
+      .hero-oss { font-size: 16px; }
+      .hero-btns { flex-direction: column; align-items: center; gap: 10px; }
+      .hero-stats { gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+      /* About */
+      .about-inner { padding: 36px 16px; }
+      .about-section h3 { font-size: 26px; }
+      .about-body { font-size: 15px; }
+      .about-founder-wrap { display: flex; flex-direction: column; }
+      .about-founder-photo { width: 100%; }
+      .about-founder-photo-oval { width: 160px; height: 200px; }
+
+      /* Features */
+      .features-strip { padding: 32px 12px; }
+
+      /* Footer */
       .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .topbar-right { gap: 8px; }
+      .topbar-right a:nth-child(3) { display: none; } /* hide email on very small screens */
+      .brand-name { font-size: 16px; }
+      .hero h2 { font-size: 24px; }
+      .hero-oss { font-size: 15px; }
+      .btn-header { font-size: 12px; padding: 8px 14px; }
     }
   </style>
 </head>
