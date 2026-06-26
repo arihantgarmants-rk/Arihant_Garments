@@ -56,7 +56,9 @@
     }
     .brand-tag::before, .brand-tag::after { content: ''; flex: 1; height: 1px; background: rgba(251,191,36,.45); min-width: 20px; }
     .nav-links { display: flex; gap: 10px; align-items: center; }
-    .nav-links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 14px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 8px 16px; border-radius: 6px; transition: all .2s; white-space: nowrap; }
+    .nav-links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 14px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 8px 16px; border-radius: 6px; transition: all .2s; white-space: nowrap; position: relative; overflow: hidden; }
+    .ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: rippleWave .65s linear; background: radial-gradient(circle, rgba(147,197,253,.75) 0%, rgba(56,189,248,.4) 50%, transparent 100%); pointer-events: none; }
+    @keyframes rippleWave { to { transform: scale(4.5); opacity: 0; } }
     .nav-links a:not(.active):hover { color: #fff; background: rgba(255,255,255,.08); transform: scale(1.08); font-weight: 700; position: relative; z-index: 2; }
     .nav-links a.active { color: var(--gold); background: rgba(251,191,36,.12); }
     .btn-header { background: var(--blue); color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; animation: btnGlow 2s ease-in-out infinite; transition: transform .15s; }
@@ -243,7 +245,7 @@
     /* ── BOTTOM TAB BAR ── */
     .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 62px; background: #0f0e47; border-top: 2px solid rgba(251,191,36,.35); z-index: 999; box-shadow: 0 -4px 20px rgba(0,0,0,.4); }
     .bottom-nav-inner { display: flex; height: 100%; }
-    .bottom-nav a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; font-family: 'Lato', sans-serif; letter-spacing: .04em; text-transform: uppercase; gap: 4px; transition: color .2s; border-right: 1px solid rgba(255,255,255,.07); }
+    .bottom-nav a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; font-family: 'Lato', sans-serif; letter-spacing: .04em; text-transform: uppercase; gap: 4px; transition: color .2s; border-right: 1px solid rgba(255,255,255,.07); position: relative; overflow: hidden; }
     .bottom-nav a:last-child { border-right: none; }
     .bottom-nav a .bnav-icon { font-size: 20px; line-height: 1; }
     .bottom-nav a.active { color: #fbbf24; background: rgba(251,191,36,.08); }
@@ -484,6 +486,21 @@
   hamburger.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open'); hamburger.textContent = open ? '✕' : '☰'; });
   menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; });
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; }));
+</script>
+<script>
+  document.querySelectorAll('.nav-links a, .bottom-nav a').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      var r = document.createElement('span');
+      r.className = 'ripple';
+      var rect = this.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height);
+      r.style.width = r.style.height = size + 'px';
+      r.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      r.style.top  = (e.clientY - rect.top  - size / 2) + 'px';
+      this.appendChild(r);
+      setTimeout(function() { r.remove(); }, 700);
+    });
+  });
 </script>
 </body>
 </html>
