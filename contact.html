@@ -239,7 +239,7 @@
     @keyframes waRipple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2); opacity: 0; } }
 
     /* ── RESPONSIVE ── */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; z-index: 300; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px 12px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; z-index: 300; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -255,6 +255,7 @@
       .topbar-left { display: none; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .btn-header { display: none; }
       .brand-tag { display: none; }
       .brand-name { font-size: 15px; }
       .info-grid { grid-template-columns: 1fr; }
