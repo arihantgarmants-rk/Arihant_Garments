@@ -288,7 +288,8 @@
       .nav-links { display: none; }
       .hamburger { display: none; }
       .btn-header { display: none; }
-      .brand-tag { display: none; }
+      .brand-tag { font-size: 10px; }
+      .brand-tag::before, .brand-tag::after { min-width: 10px; }
       .brand-name { font-size: 18px; }
 
       /* Hero */
@@ -313,6 +314,8 @@
 
       /* Footer */
       .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+      /* WhatsApp float overlaps bottom tab bar */
+      .wa-float { display: none; }
     }
 
     @media (max-width: 480px) {
