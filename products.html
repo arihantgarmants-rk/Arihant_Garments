@@ -187,6 +187,16 @@
     @keyframes waRipple { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2); opacity: 0; } }
 
     /* ── RESPONSIVE ── */
+    /* ── BOTTOM TAB BAR ── */
+    .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; height: 62px; background: #0f0e47; border-top: 2px solid rgba(251,191,36,.35); z-index: 999; box-shadow: 0 -4px 20px rgba(0,0,0,.4); }
+    .bottom-nav-inner { display: flex; height: 100%; }
+    .bottom-nav a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; font-family: 'Lato', sans-serif; letter-spacing: .04em; text-transform: uppercase; gap: 4px; transition: color .2s; border-right: 1px solid rgba(255,255,255,.07); }
+    .bottom-nav a:last-child { border-right: none; }
+    .bottom-nav a .bnav-icon { font-size: 20px; line-height: 1; }
+    .bottom-nav a.active { color: #fbbf24; background: rgba(251,191,36,.08); }
+    .bottom-nav a:not(.active):hover { color: #fff; background: rgba(255,255,255,.05); }
+    @media (max-width: 768px) { .bottom-nav { display: block; } body { padding-bottom: 62px; } }
+
     .hamburger { display: none; align-items: center; justify-content: center; cursor: pointer; padding: 8px 14px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; z-index: 300; color: #fff; font-size: 22px; line-height: 1; transition: background .2s; }
     .hamburger:hover { background: rgba(255,255,255,.22); }
     .hamburger.open { background: rgba(251,191,36,.2); border-color: rgba(251,191,36,.5); }
@@ -414,6 +424,15 @@
     setInterval(() => go(cur + 1), 3000);
   });
 </script>
+<!-- BOTTOM TAB BAR -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-inner">
+    <a href="index.html"><span class="bnav-icon">🏠</span>Home</a>
+    <a href="products.html" class="active"><span class="bnav-icon">👕</span>Products</a>
+    <a href="contact.html"><span class="bnav-icon">📬</span>Contact</a>
+  </div>
+</nav>
+
 <script>
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
