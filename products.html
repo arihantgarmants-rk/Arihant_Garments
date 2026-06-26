@@ -230,6 +230,10 @@
       .page-banner { overflow-x: hidden; width: 100%; }
       .page-banner h2 { font-size: 26px; padding: 0 12px; flex-wrap: wrap; justify-content: center; word-break: break-word; }
       .page-banner p { word-break: break-word; padding: 0 12px; }
+      /* Stop ticker overflow on mobile — show as static text */
+      .ticker-track { animation: none; transform: none; width: 100%; flex-wrap: wrap; justify-content: center; }
+      .ticker-item { white-space: normal; text-align: center; padding: 0 16px; font-size: 13px; }
+      .ticker-item:not(:first-child) { display: none; }
       .wa-float { bottom: 72px; right: 14px; width: 52px; height: 52px; }
       .wa-float::before { width: 52px; height: 52px; }
       .wa-float svg { width: 26px; height: 26px; }
