@@ -23,13 +23,14 @@
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--gray); color: var(--text); }
 
     /* ── TOPBAR ── */
-    .topbar { background: #07061f; padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; position: sticky; top: 0; z-index: 201; border-bottom: 2px solid #fff; }
+    .topbar { background: #07061f; padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; position: fixed; top: 0; left: 0; right: 0; z-index: 201; border-bottom: 2px solid #fff; }
     .topbar-left, .topbar-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .topbar a, .topbar-left { color: rgba(255,255,255,.82); font-size: 12px; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color .2s; text-shadow: 0 0 8px rgba(255,255,255,.35), 0 0 16px rgba(255,255,255,.15); }
     .topbar a:hover { color: #e09a2a; }
 
     /* ── HEADER ── */
-    header { background: var(--navy); position: sticky; top: 34px; z-index: 200; box-shadow: 0 2px 16px rgba(0,0,0,.35); }
+    header { background: var(--navy); position: fixed; top: 34px; left: 0; right: 0; z-index: 200; box-shadow: 0 2px 16px rgba(0,0,0,.35); }
+    body { padding-top: 102px; }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 68px; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
     .brand-logo { height: 46px; width: auto; display: block; animation: logoFloat 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite; transition: transform .3s; border-radius: 50%; }
