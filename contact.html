@@ -272,7 +272,12 @@
       body { padding-top: 108px; }
       .nav-links { display: none; }
       .hamburger { display: none; }
-      .btn-header { font-size: 11px; padding: 7px 10px; gap: 4px; }
+      .header-inner { padding: 0 8px 0 6px; height: 58px; justify-content: flex-start; gap: 10px; }
+      .btn-header { font-size: 11px; padding: 7px 10px; gap: 4px; margin-left: auto; animation: mobileBtnPulse 2s ease-in-out infinite; }
+      @keyframes mobileBtnPulse {
+        0%,100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(45,43,181,.6); }
+        50%      { transform: scale(1.06); box-shadow: 0 0 0 7px rgba(45,43,181,0); }
+      }
       .brand-tag { font-size: 10px; }
       .brand-tag::before, .brand-tag::after { min-width: 10px; }
       .brand-name { font-size: 15px; }
