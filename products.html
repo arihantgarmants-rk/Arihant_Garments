@@ -41,8 +41,10 @@
         #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c77dff, #ff6b6b, #ffd93d, #6bcb77, #4d96ff, #c77dff);
       background-size: 300% auto;
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: indiaShimmer 4s linear infinite;
+      animation: indiaShimmer 4s linear infinite, brandZoom 3s ease-in-out infinite;
+      display: inline-block;
     }
+    @keyframes brandZoom { 0%,100% { transform: scale(1); } 50% { transform: scale(1.09); } }
     @keyframes indiaShimmer {
       0%   { background-position: 0% center; }
       100% { background-position: 300% center; }
