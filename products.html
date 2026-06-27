@@ -223,6 +223,13 @@
     .foot-copy { color: rgba(255,255,255,.22); font-size: 12px; }
     .foot-tagline { color: #c8871e; font-size: 13px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 
+    /* ── FLOATING MAP ── */
+    .map-float { position: fixed; bottom: 100px; right: 26px; width: 62px; height: 62px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 998; text-decoration: none; box-shadow: 0 4px 18px rgba(234,67,53,.35); border: 2px solid rgba(234,67,53,.25); transition: transform .22s, box-shadow .22s; }
+    .map-float:hover { transform: scale(1.13); box-shadow: 0 8px 32px rgba(234,67,53,.6); }
+    .map-float svg { width: 32px; height: 32px; }
+    .map-float::after { content: '📍 View on Map'; position: absolute; right: 74px; background: #111; color: #fff; padding: 7px 14px; border-radius: 8px; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; font-weight: 500; }
+    .map-float:hover::after { opacity: 1; }
+
     /* ── FLOATING WA ── */
     .wa-float { position: fixed; bottom: 26px; right: 26px; width: 62px; height: 62px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; text-decoration: none; transition: transform .22s; animation: waRing 2s ease-out infinite; }
     .wa-float:hover { transform: scale(1.13); animation: none; box-shadow: 0 8px 32px rgba(37,211,102,.65); }
@@ -283,6 +290,8 @@
       .page-banner p { word-break: break-word; padding: 0 12px; }
       .ticker-wrap { overflow: hidden; }
       .ticker-item { font-size: 13px; }
+      .map-float { bottom: 134px; right: 14px; width: 52px; height: 52px; }
+      .map-float svg { width: 26px; height: 26px; }
       .wa-float { bottom: 72px; right: 14px; width: 52px; height: 52px; }
       .wa-float::before { width: 52px; height: 52px; }
       .wa-float svg { width: 26px; height: 26px; }
@@ -436,6 +445,11 @@
     </div>
   </div>
 </div>
+
+<!-- FLOATING GOOGLE MAPS -->
+<a class="map-float" href="https://maps.google.com/?q=155-B+Rabindra+Sarani+Kolkata" target="_blank" aria-label="View on Google Maps">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335"/></svg>
+</a>
 
 <!-- FLOATING WHATSAPP -->
 <a class="wa-float" href="https://wa.me/918777433734?text=Hi%20Arihant%20Garments%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" aria-label="WhatsApp">
