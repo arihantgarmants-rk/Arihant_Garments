@@ -163,8 +163,11 @@
     .about-body { font-family: 'Lora', Georgia, serif; font-size: 16.5px; color: #3d5068; line-height: 2.0; max-width: 780px; margin: 0 auto 32px; }
     .hl-gold { color: #c8871e; font-weight: 700; }
     .hl-navy { color: #0f0e47; font-weight: 700; }
-    .about-founder-wrap { display: inline-flex; justify-content: center; background: linear-gradient(135deg, #0f0e47 0%, #1a1880 60%, #0f0e47 100%); border: 2px solid #c8871e; border-radius: 20px; overflow: hidden; box-shadow: 0 0 50px rgba(147,197,253,.55), 0 0 100px rgba(147,197,253,.30), 0 0 160px rgba(147,197,253,.15), 0 0 200px rgba(147,197,253,.08), 0 0 0 4px rgba(147,197,253,.15); position: relative; animation: founderGlow 3s ease-in-out infinite; }
-    @keyframes founderGlow { 0%,100% { box-shadow: 0 0 50px rgba(147,197,253,.55), 0 0 100px rgba(147,197,253,.30), 0 0 160px rgba(147,197,253,.15), 0 0 200px rgba(147,197,253,.08), 0 0 0 4px rgba(147,197,253,.15); } 50% { box-shadow: 0 0 70px rgba(147,197,253,.80), 0 0 130px rgba(147,197,253,.50), 0 0 200px rgba(147,197,253,.28), 0 0 260px rgba(147,197,253,.12), 0 0 0 4px rgba(147,197,253,.25); } }
+    .founder-spin-wrap { position: relative; display: inline-flex; border-radius: 24px; padding: 3px; overflow: hidden; animation: founderWrapGlow 3s ease-in-out infinite; }
+    .founder-spin-wrap::before { content: ''; position: absolute; inset: -150%; background: conic-gradient(from 0deg, #fbbf24, #f97316, #a855f7, #00BFFF, #2d2bb5, #10b981, #c8871e, #fbbf24); animation: spinCardBorder 5s linear infinite; }
+    @keyframes spinCardBorder { to { transform: rotate(360deg); } }
+    @keyframes founderWrapGlow { 0%,100% { box-shadow: 0 0 40px rgba(200,135,30,.55), 0 0 80px rgba(0,191,255,.3), 0 0 140px rgba(168,85,247,.2); } 50% { box-shadow: 0 0 70px rgba(200,135,30,.85), 0 0 130px rgba(0,191,255,.55), 0 0 200px rgba(168,85,247,.35); } }
+    .about-founder-wrap { display: inline-flex; justify-content: center; background: linear-gradient(135deg, #0f0e47 0%, #1a1880 60%, #0f0e47 100%); border: none; border-radius: 20px; overflow: hidden; position: relative; z-index: 1; }
     .about-founder-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(200,135,30,.10) 0%, transparent 55%); pointer-events: none; }
     .about-founder-quote { font-size: 64px; color: #c8871e; opacity: .25; line-height: 1; margin-bottom: -10px; font-family: Georgia, serif; }
     .about-founder-promise { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 14px; line-height: 1.4; }
@@ -435,6 +438,7 @@
       <br><br>
       Our philosophy is simple: <span class="hl-navy">relationships over transactions</span>, <span class="hl-navy">quality over compromise</span>, and <span class="hl-navy">transparency</span> in everything we do. Arihant Garments is more than a uniform supplier — we are a <span class="hl-gold">long-term partner</span> you can rely on, season after season.
     </p>
+    <div class="founder-spin-wrap">
     <div class="about-founder-wrap">
       <div class="about-founder-photo">
         <div class="about-founder-photo-oval">
@@ -446,6 +450,7 @@
           <div class="about-founder-photo-role">Est. 2001 &nbsp;·&nbsp; Kolkata, West Bengal</div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
