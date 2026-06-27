@@ -481,12 +481,7 @@
       <div class="modal-prod-label" id="modalLabel"></div>
       <div class="modal-prod-sub">School uniform by Arihant Garments — premium quality, custom stitching available for every requirement.</div>
       <div class="modal-img-count" id="modalCount"></div>
-      <ul class="modal-features">
-        <li>Premium quality fabric</li>
-        <li>Custom sizes &amp; colours available</li>
-        <li>Bulk orders welcome</li>
-        <li>PAN India delivery</li>
-      </ul>
+      <ul class="modal-features" id="modalFeatures"></ul>
       <div class="modal-action-btns" id="modalBtns"></div>
     </div>
   </div>
@@ -551,7 +546,7 @@
     { id: 33, images: ['57.png', '58.png'] },
     { id: 34, images: ['59.png', '60.png'] },
     { id: 35, images: ['62.png', '63.png', '64.png'] },
-    { id: 36, images: ['65.png'] },
+    { id: 36, images: ['65.png'], features: ['Custom sizes &amp; colours available', 'Bulk orders welcome', 'PAN India delivery'] },
     { id: 37, images: ['66.png'] },
   ];
 
@@ -628,6 +623,9 @@
     mDotEls  = mDotWrap.querySelectorAll('.modal-dot');
     mDotEls.forEach((d,i) => d.addEventListener('click', () => goModal(i)));
     mLabel.textContent = `Product #${pad(p.id)}`;
+    const defaultFeatures = ['Premium quality fabric', 'Custom sizes &amp; colours available', 'Bulk orders welcome', 'PAN India delivery'];
+    const featureList = p.features || defaultFeatures;
+    document.getElementById('modalFeatures').innerHTML = featureList.map(f => `<li>${f}</li>`).join('');
     mCount.textContent = p.images.length > 1 ? `Photo 1 of ${p.images.length}` : '';
     mBtns.innerHTML = `
       <a class="mbtn-wa"  href="${WA}?text=Hi%2C%20I%27m%20interested%20in%20Product%20%23${pad(p.id)}" target="_blank">💬 WhatsApp</a>
