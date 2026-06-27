@@ -232,15 +232,17 @@
     .foot-tagline { color: #c8871e; font-size: 13px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 
     /* ── FLOATING MAP ── */
-    .map-float { position: fixed; bottom: 120px; right: 26px; width: 62px; height: 62px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 998; text-decoration: none; box-shadow: 0 4px 18px rgba(234,67,53,.35); border: 2px solid rgba(234,67,53,.25); transition: transform .22s; animation: mapRing 2s ease-in-out infinite; }
-    .map-float:hover { transform: scale(1.13); animation: none; box-shadow: 0 8px 32px rgba(234,67,53,.6); }
-    .map-float::before { content: ''; position: absolute; width: 62px; height: 62px; border-radius: 50%; background: rgba(234,67,53,.22); animation: mapRipple 2s ease-out infinite; z-index: -1; }
-    .map-float::after { content: 'View on Map'; position: absolute; right: 74px; background: #111; color: #fff; padding: 7px 14px; border-radius: 8px; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; font-weight: 500; }
-    .map-float:hover::after { opacity: 1; }
-    .map-emoji { display: block; font-size: 28px; animation: mapBounce 2s ease-in-out infinite; }
-    @keyframes mapRing { 0%,100% { box-shadow: 0 4px 18px rgba(234,67,53,.4); } 50% { box-shadow: 0 4px 32px rgba(234,67,53,.75); } }
-    @keyframes mapRipple { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.2); opacity: 0; } }
-    @keyframes mapBounce { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-6px); } 60% { transform: translateY(-3px); } }
+    .map-float { position: fixed; bottom: 120px; right: 26px; z-index: 998; text-decoration: none; display: flex; }
+    .map-emoji { position: relative; display: inline-flex; }
+    .map-emoji::before { content: ''; position: absolute; width: 66px; height: 66px; border: 2px dashed rgba(0,191,255,.75); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: orbitRing 4s linear infinite; pointer-events: none; }
+    .map-emoji::after { content: ''; position: absolute; width: 9px; height: 9px; background: #00BFFF; border-radius: 50%; box-shadow: 0 0 8px 4px rgba(0,191,255,.85); top: calc(50% - 37.5px); left: calc(50% - 4.5px); transform-origin: 4.5px 37.5px; animation: orbitDot 4s linear infinite; pointer-events: none; }
+    .globe-spin { font-size: 52px; line-height: 1; animation: globeGlow 2s ease-in-out infinite; }
+    @keyframes orbitRing { to { transform: translate(-50%,-50%) rotate(360deg); } }
+    @keyframes orbitDot { to { transform: rotate(360deg); } }
+    .map-pin-icon { position: absolute; top: -4px; left: 50%; font-size: 30px; animation: pinUpDown 1s ease-in-out infinite, pinRing 2s ease-in-out infinite; }
+    @keyframes globeGlow { 0%,100% { filter: drop-shadow(0 0 6px rgba(0,191,255,.65)); } 50% { filter: drop-shadow(0 0 18px rgba(0,191,255,1)); } }
+    @keyframes pinUpDown { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-9px); } }
+    @keyframes pinRing { 0%,100% { filter: drop-shadow(0 0 3px rgba(220,38,38,.7)); } 50% { filter: drop-shadow(0 0 10px rgba(220,38,38,1)); } }
 
     /* ── FLOATING WA ── */
     .wa-float { position: fixed; bottom: 26px; right: 26px; width: 62px; height: 62px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; text-decoration: none; transition: transform .22s; animation: waRing 2s ease-out infinite; }
@@ -302,9 +304,9 @@
       .page-banner p { word-break: break-word; }
       .ticker-wrap { overflow: hidden; }
       .ticker-item { font-size: 13px; }
-      .map-float { bottom: 154px; right: 14px; width: 52px; height: 52px; }
-      .map-float::before { width: 52px; height: 52px; }
-      .map-emoji { font-size: 24px; }
+      .map-float { bottom: 154px; right: 14px; }
+      .globe-spin { font-size: 44px; }
+      .map-pin-icon { font-size: 24px; top: -2px; }
       .wa-float { bottom: 72px; right: 14px; width: 52px; height: 52px; }
       .wa-float::before { width: 52px; height: 52px; }
       .wa-float svg { width: 26px; height: 26px; }
@@ -481,7 +483,7 @@
 
 <!-- FLOATING GOOGLE MAPS -->
 <a class="map-float" href="https://maps.google.com/?q=155-B+Rabindra+Sarani+Kolkata" target="_blank" aria-label="View on Google Maps">
-  <span class="map-emoji">📍</span>
+  <span class="map-emoji"><span class="globe-spin">🌍</span><span class="map-pin-icon">📍</span></span>
 </a>
 
 <!-- FLOATING WHATSAPP -->
@@ -505,6 +507,7 @@
   hamburger.addEventListener('click', () => { const open = mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open'); hamburger.textContent = open ? '✕' : '☰'; });
   menuClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; });
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); hamburger.textContent = '☰'; }));
+  (function(){ const g=['🌍','🌎','🌏']; let i=0; setInterval(function(){ i=(i+1)%3; document.querySelectorAll('.globe-spin').forEach(function(el){ el.textContent=g[i]; }); },420); })();
 </script>
 </body>
 </html>
