@@ -182,7 +182,8 @@
     .about-founder-name { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: .02em; }
     .about-founder-meta { font-size: 13px; color: rgba(255,255,255,.55); font-style: italic; }
     .about-founder-photo { width: 300px; flex-shrink: 0; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 32px 28px; background: transparent; }
-    .about-founder-photo-oval { width: 220px; height: 280px; border-radius: 50%; overflow: hidden; border: 3px solid #c8871e; box-shadow: 0 0 0 6px rgba(200,135,30,.15), 0 8px 32px rgba(200,135,30,.3); }
+    .about-founder-photo-oval { width: 220px; height: 280px; border-radius: 50%; overflow: hidden; border: 3px solid #00BFFF; box-shadow: 0 0 10px rgba(0,191,255,.8), 0 0 24px rgba(0,191,255,.5), 0 0 50px rgba(0,191,255,.25); animation: ovalNeonPulse 2.5s ease-in-out infinite; }
+    @keyframes ovalNeonPulse { 0%,100% { box-shadow: 0 0 8px rgba(0,191,255,.7), 0 0 20px rgba(0,191,255,.4), 0 0 40px rgba(0,191,255,.2); border-color: #00BFFF; } 50% { box-shadow: 0 0 18px rgba(0,191,255,1), 0 0 38px rgba(0,191,255,.7), 0 0 70px rgba(0,191,255,.4); border-color: #7DF9FF; } }
     .about-founder-photo-oval img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
     .about-founder-photo-label { text-align: center; margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
     .about-founder-photo-name { font-size: 22px; font-weight: 800; letter-spacing: .03em; background: linear-gradient(90deg, #fbbf24 0%, #fff 40%, #fbbf24 60%, #e09a2a 100%); background-size: 250% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: founderShimmer 3s ease-in-out infinite; }
