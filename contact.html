@@ -51,12 +51,12 @@
       0%   { background-position: 0% center; }
       100% { background-position: 300% center; }
     }
-    .brand-tag { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: 14px; letter-spacing: .03em; display: flex; align-items: center; gap: 8px; background: linear-gradient(90deg, #00BFFF, #E0F7FF, #1E90FF, #00CED1, #E0F7FF, #00BFFF, #E0F7FF, #1E90FF, #00CED1, #E0F7FF); background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: indiaShimmer 4s linear infinite, brandZoom 3s ease-in-out infinite; }
+    .brand-tag { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: 14px; color: var(--gold); letter-spacing: .03em; display: flex; align-items: center; gap: 8px; animation: tagGlow 2.5s ease-in-out infinite, brandZoom 3s ease-in-out infinite; }
     @keyframes tagGlow {
       0%,100% { text-shadow: 0 0 6px rgba(251,191,36,.3); }
       50%      { text-shadow: 0 0 14px rgba(251,191,36,.9), 0 0 28px rgba(251,191,36,.4); }
     }
-    .brand-tag::before, .brand-tag::after { content: ''; flex: 1; height: 1px; background: rgba(0,191,255,.45); min-width: 20px; }
+    .brand-tag::before, .brand-tag::after { content: ''; flex: 1; height: 1px; background: rgba(251,191,36,.45); min-width: 20px; }
     .nav-links { display: flex; gap: 10px; align-items: center; }
     .nav-links a { color: rgba(255,255,255,.72); text-decoration: none; font-size: 14px; font-weight: 900; font-family: 'Lato', sans-serif; padding: 8px 16px; border-radius: 6px; transition: all .2s; white-space: nowrap; }
     .nav-links a:not(.active):hover { color: #fff; background: rgba(255,255,255,.08); transform: scale(1.08); font-weight: 700; position: relative; z-index: 2; }
