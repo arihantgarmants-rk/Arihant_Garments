@@ -224,11 +224,15 @@
     .foot-tagline { color: #c8871e; font-size: 13px; font-style: italic; font-family: 'Cormorant Garamond', serif; }
 
     /* ── FLOATING MAP ── */
-    .map-float { position: fixed; bottom: 100px; right: 26px; width: 62px; height: 62px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 998; text-decoration: none; box-shadow: 0 4px 18px rgba(234,67,53,.35); border: 2px solid rgba(234,67,53,.25); transition: transform .22s, box-shadow .22s; }
-    .map-float:hover { transform: scale(1.13); box-shadow: 0 8px 32px rgba(234,67,53,.6); }
-    .map-float svg { width: 32px; height: 32px; }
-    .map-float::after { content: '📍 View on Map'; position: absolute; right: 74px; background: #111; color: #fff; padding: 7px 14px; border-radius: 8px; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; font-weight: 500; }
+    .map-float { position: fixed; bottom: 120px; right: 26px; width: 62px; height: 62px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 998; text-decoration: none; box-shadow: 0 4px 18px rgba(234,67,53,.35); border: 2px solid rgba(234,67,53,.25); transition: transform .22s; animation: mapRing 2s ease-in-out infinite; }
+    .map-float:hover { transform: scale(1.13); animation: none; box-shadow: 0 8px 32px rgba(234,67,53,.6); }
+    .map-float::before { content: ''; position: absolute; width: 62px; height: 62px; border-radius: 50%; background: rgba(234,67,53,.22); animation: mapRipple 2s ease-out infinite; z-index: -1; }
+    .map-float::after { content: 'View on Map'; position: absolute; right: 74px; background: #111; color: #fff; padding: 7px 14px; border-radius: 8px; font-size: 13px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s; font-weight: 500; }
     .map-float:hover::after { opacity: 1; }
+    .map-emoji { display: block; font-size: 28px; animation: mapBounce 2s ease-in-out infinite; }
+    @keyframes mapRing { 0%,100% { box-shadow: 0 4px 18px rgba(234,67,53,.4); } 50% { box-shadow: 0 4px 32px rgba(234,67,53,.75); } }
+    @keyframes mapRipple { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.2); opacity: 0; } }
+    @keyframes mapBounce { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-6px); } 60% { transform: translateY(-3px); } }
 
     /* ── FLOATING WA ── */
     .wa-float { position: fixed; bottom: 26px; right: 26px; width: 62px; height: 62px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; text-decoration: none; transition: transform .22s; animation: waRing 2s ease-out infinite; }
@@ -290,8 +294,9 @@
       .page-banner p { word-break: break-word; padding: 0 12px; }
       .ticker-wrap { overflow: hidden; }
       .ticker-item { font-size: 13px; }
-      .map-float { bottom: 134px; right: 14px; width: 52px; height: 52px; }
-      .map-float svg { width: 26px; height: 26px; }
+      .map-float { bottom: 154px; right: 14px; width: 52px; height: 52px; }
+      .map-float::before { width: 52px; height: 52px; }
+      .map-emoji { font-size: 24px; }
       .wa-float { bottom: 72px; right: 14px; width: 52px; height: 52px; }
       .wa-float::before { width: 52px; height: 52px; }
       .wa-float svg { width: 26px; height: 26px; }
@@ -448,7 +453,7 @@
 
 <!-- FLOATING GOOGLE MAPS -->
 <a class="map-float" href="https://maps.google.com/?q=155-B+Rabindra+Sarani+Kolkata" target="_blank" aria-label="View on Google Maps">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335"/></svg>
+  <span class="map-emoji">📍</span>
 </a>
 
 <!-- FLOATING WHATSAPP -->
