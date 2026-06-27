@@ -161,6 +161,34 @@
     .more-cta-btn { display:inline-block; background:linear-gradient(135deg,#fbbf24,#f97316); color:#0f0e47; font-size:15px; font-weight:700; padding:13px 32px; border-radius:50px; text-decoration:none; letter-spacing:.04em; box-shadow:0 4px 18px rgba(251,191,36,.35); transition:transform .2s, box-shadow .2s; }
     .more-cta-btn:hover { transform:translateY(-2px) scale(1.04); box-shadow:0 8px 28px rgba(251,191,36,.50); }
 
+    /* ── PRODUCT MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,.75); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 16px; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: #fff; border-radius: 20px; width: 100%; max-width: 460px; max-height: 92vh; overflow-y: auto; position: relative; box-shadow: 0 28px 80px rgba(0,0,0,.55); border: 2px solid rgba(200,135,30,.45); animation: modalIn .28s cubic-bezier(.34,1.45,.64,1); }
+    @keyframes modalIn { from { transform: scale(.84); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-close { position: absolute; top: 11px; right: 11px; z-index: 10; width: 34px; height: 34px; border-radius: 50%; border: none; background: rgba(15,14,71,.75); color: #fff; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 700; transition: background .2s, transform .15s; }
+    .modal-close:hover { background: #c0392b; transform: scale(1.1); }
+    .modal-img-wrap { position: relative; aspect-ratio: 3/4; background: linear-gradient(160deg,#eef2ff,#f8f9fa); border-radius: 18px 18px 0 0; overflow: hidden; }
+    .modal-track { display: flex; height: 100%; transition: transform .32s ease; }
+    .modal-slide { min-width: 100%; height: 100%; }
+    .modal-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .modal-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.88); border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.22); z-index: 3; transition: background .18s; }
+    .modal-nav:hover { background: #fff; }
+    .modal-nav.mprev { left: 10px; }
+    .modal-nav.mnext { right: 10px; }
+    .modal-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 3; }
+    .modal-dot { width: 9px; height: 9px; border-radius: 50%; border: none; background: rgba(0,0,0,.25); cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+    .modal-dot.on { background: #fbbf24; transform: scale(1.45); box-shadow: 0 0 5px rgba(251,191,36,.6); }
+    .modal-info { padding: 18px 20px 22px; }
+    .modal-prod-label { font-size: 13px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 4px; }
+    .modal-img-count { font-size: 12px; color: #94a3b8; margin-bottom: 14px; }
+    .modal-action-btns { display: flex; gap: 10px; }
+    .modal-action-btns a { flex: 1; padding: 12px 10px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; transition: opacity .18s, transform .12s; }
+    .modal-action-btns a:hover { opacity: .86; transform: translateY(-1px); }
+    .mbtn-wa  { background: #25d366; color: #fff; }
+    .mbtn-enq { background: #0f0e47; color: #fff; }
+    .product-card { cursor: pointer; }
+
     /* ── FOOTER ── */
     footer { background: var(--navy); }
     .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 44px 24px 28px; }
@@ -366,6 +394,24 @@
   </div>
 </footer>
 
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <div class="modal-img-wrap">
+      <div class="modal-track" id="modalTrack"></div>
+      <button class="modal-nav mprev" id="modalPrev">&#8249;</button>
+      <button class="modal-nav mnext" id="modalNext">&#8250;</button>
+      <div class="modal-dots" id="modalDots"></div>
+    </div>
+    <div class="modal-info">
+      <div class="modal-prod-label" id="modalLabel"></div>
+      <div class="modal-img-count" id="modalCount"></div>
+      <div class="modal-action-btns" id="modalBtns"></div>
+    </div>
+  </div>
+</div>
+
 <!-- FLOATING WHATSAPP -->
 <a class="wa-float" href="https://wa.me/918777433734?text=Hi%20Arihant%20Garments%2C%20I%27d%20like%20to%20enquire%20about%20your%20products." target="_blank" aria-label="WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.549 4.107 1.513 5.833L.057 23.215a.75.75 0 0 0 .729.946.749.749 0 0 0 .199-.027l5.578-1.488A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-5.018-1.394.75.75 0 0 0-.497-.093l-3.756 1.003 1.003-3.666a.75.75 0 0 0-.103-.624A9.72 9.72 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25c5.384 0 9.75 4.365 9.75 9.75 0 5.384-4.366 9.75-9.75 9.75z"/></svg>
@@ -452,6 +498,66 @@
     car.querySelector('.next').addEventListener('click', () => go(cur + 1));
     dots.forEach((d,i) => d.addEventListener('click', () => go(i)));
     setInterval(() => go(cur + 1), 3000);
+  });
+
+  /* ── PRODUCT MODAL ── */
+  const overlay   = document.getElementById('modalOverlay');
+  const mTrack    = document.getElementById('modalTrack');
+  const mDotWrap  = document.getElementById('modalDots');
+  const mLabel    = document.getElementById('modalLabel');
+  const mCount    = document.getElementById('modalCount');
+  const mBtns     = document.getElementById('modalBtns');
+  const mPrev     = document.getElementById('modalPrev');
+  const mNext     = document.getElementById('modalNext');
+  let mCur = 0, mSlides = [], mDotEls = [];
+
+  function goModal(n) {
+    mCur = (n + mSlides.length) % mSlides.length;
+    mTrack.style.transform = `translateX(-${mCur * 100}%)`;
+    mDotEls.forEach((d,i) => d.classList.toggle('on', i === mCur));
+    mCount.textContent = mSlides.length > 1 ? `Photo ${mCur + 1} of ${mSlides.length}` : '';
+  }
+
+  function openModal(p) {
+    mCur = 0;
+    mTrack.innerHTML = p.images.map(img =>
+      `<div class="modal-slide"><img src="product/${img}" alt="Product ${pad(p.id)}" /></div>`
+    ).join('');
+    mDotWrap.innerHTML = p.images.length > 1
+      ? p.images.map((_,i) => `<button class="modal-dot${i===0?' on':''}" data-i="${i}"></button>`).join('')
+      : '';
+    mSlides  = mTrack.querySelectorAll('.modal-slide');
+    mDotEls  = mDotWrap.querySelectorAll('.modal-dot');
+    mDotEls.forEach((d,i) => d.addEventListener('click', () => goModal(i)));
+    mLabel.textContent = `Product #${pad(p.id)}`;
+    mCount.textContent = p.images.length > 1 ? `Photo 1 of ${p.images.length}` : '';
+    mBtns.innerHTML = `
+      <a class="mbtn-wa"  href="${WA}?text=Hi%2C%20I%27m%20interested%20in%20Product%20%23${pad(p.id)}" target="_blank">💬 WhatsApp</a>
+      <a class="mbtn-enq" href="${ENQ}" target="_blank">📋 Enquire</a>`;
+    mPrev.style.display = p.images.length > 1 ? 'flex' : 'none';
+    mNext.style.display = p.images.length > 1 ? 'flex' : 'none';
+    mTrack.style.transform = 'translateX(0)';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  mPrev.addEventListener('click', () => goModal(mCur - 1));
+  mNext.addEventListener('click', () => goModal(mCur + 1));
+
+  document.getElementById('grid').addEventListener('click', function(e) {
+    if (e.target.closest('.cbtn') || e.target.closest('.c-btn') || e.target.closest('.c-dot')) return;
+    const card = e.target.closest('.product-card');
+    if (!card) return;
+    const idx = Array.from(document.querySelectorAll('.product-card')).indexOf(card);
+    if (idx !== -1) openModal(products[idx]);
   });
 </script>
 <!-- BOTTOM TAB BAR -->
