@@ -163,10 +163,11 @@
     .about-body { font-family: 'Lora', Georgia, serif; font-size: 16.5px; color: #3d5068; line-height: 2.0; max-width: 780px; margin: 0 auto 32px; }
     .hl-gold { color: #c8871e; font-weight: 700; }
     .hl-navy { color: #0f0e47; font-weight: 700; }
-    .founder-spin-wrap { position: relative; display: inline-flex; border-radius: 24px; padding: 3px; overflow: hidden; animation: founderWrapGlow 3s ease-in-out infinite; }
-    .founder-spin-wrap::before { content: ''; position: absolute; inset: -150%; background: conic-gradient(from 0deg, #fbbf24, #f97316, #a855f7, #00BFFF, #2d2bb5, #10b981, #c8871e, #fbbf24); animation: spinCardBorder 5s linear infinite; }
-    @keyframes spinCardBorder { to { transform: rotate(360deg); } }
-    @keyframes founderWrapGlow { 0%,100% { box-shadow: 0 0 40px rgba(200,135,30,.55), 0 0 80px rgba(0,191,255,.3), 0 0 140px rgba(168,85,247,.2); } 50% { box-shadow: 0 0 70px rgba(200,135,30,.85), 0 0 130px rgba(0,191,255,.55), 0 0 200px rgba(168,85,247,.35); } }
+    .founder-spin-wrap { position: relative; display: inline-flex; border-radius: 24px; padding: 3px; overflow: hidden; animation: founderNeonGlow 2.5s ease-in-out infinite; }
+    .founder-spin-wrap::before { content: none; }
+    @keyframes founderNeonGlow { 0%,100% { box-shadow: 0 0 18px #00BFFF, 0 0 40px rgba(0,191,255,.45), 0 0 80px rgba(0,191,255,.2); } 50% { box-shadow: 0 0 32px #00BFFF, 0 0 65px rgba(0,191,255,.65), 0 0 120px rgba(0,191,255,.3); } }
+    .founder-neon-frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: visible; animation: neonFramePulse 2.5s ease-in-out infinite; }
+    @keyframes neonFramePulse { 0%,100% { filter: drop-shadow(0 0 2px #00BFFF) drop-shadow(0 0 7px rgba(0,191,255,.6)); opacity: .9; } 50% { filter: drop-shadow(0 0 5px #00BFFF) drop-shadow(0 0 15px rgba(0,191,255,.95)); opacity: 1; } }
     .about-founder-wrap { display: inline-flex; justify-content: center; background: linear-gradient(135deg, #0f0e47 0%, #1a1880 60%, #0f0e47 100%); border: none; border-radius: 20px; overflow: hidden; position: relative; z-index: 1; }
     .about-founder-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(200,135,30,.10) 0%, transparent 55%); pointer-events: none; }
     .about-founder-quote { font-size: 64px; color: #c8871e; opacity: .25; line-height: 1; margin-bottom: -10px; font-family: Georgia, serif; }
@@ -441,6 +442,42 @@
       Our philosophy is simple: <span class="hl-navy">relationships over transactions</span>, <span class="hl-navy">quality over compromise</span>, and <span class="hl-navy">transparency</span> in everything we do. Arihant Garments is more than a uniform supplier — we are a <span class="hl-gold">long-term partner</span> you can rely on, season after season.
     </p>
     <div class="founder-spin-wrap">
+    <svg class="founder-neon-frame" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 440" preserveAspectRatio="none">
+      <!-- Border lines (connecting corner scrolls to centre diamonds) -->
+      <g stroke="#00BFFF" stroke-width="1.5" fill="none" stroke-linecap="round">
+        <line x1="55" y1="12" x2="144" y2="12"/>
+        <line x1="156" y1="12" x2="245" y2="12"/>
+        <line x1="55" y1="428" x2="144" y2="428"/>
+        <line x1="156" y1="428" x2="245" y2="428"/>
+        <line x1="12" y1="55" x2="12" y2="213"/>
+        <line x1="12" y1="227" x2="12" y2="384"/>
+        <line x1="288" y1="55" x2="288" y2="213"/>
+        <line x1="288" y1="227" x2="288" y2="384"/>
+      </g>
+      <!-- Centre-side diamonds -->
+      <g fill="#00BFFF">
+        <path d="M150,6 L157,12 L150,18 L143,12 Z"/>
+        <path d="M150,422 L157,428 L150,434 L143,428 Z"/>
+        <path d="M6,220 L12,213 L18,220 L12,227 Z"/>
+        <path d="M282,220 L288,213 L294,220 L288,227 Z"/>
+      </g>
+      <!-- TOP-LEFT corner -->
+      <path d="M12,6 L18,12 L12,18 L6,12 Z" fill="#00BFFF"/>
+      <path d="M18,12 C28,4 42,4 48,12 C54,20 50,29 42,25 C36,22 33,15 40,13" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12,18 C4,28 4,42 12,48 C20,54 29,50 25,42 C22,36 15,33 13,40" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- TOP-RIGHT corner -->
+      <path d="M288,6 L294,12 L288,18 L282,12 Z" fill="#00BFFF"/>
+      <path d="M282,12 C272,4 258,4 252,12 C246,20 250,29 258,25 C264,22 267,15 260,13" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M288,18 C296,28 296,42 288,48 C280,54 271,50 275,42 C278,36 285,33 287,40" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- BOTTOM-LEFT corner -->
+      <path d="M12,422 L18,428 L12,434 L6,428 Z" fill="#00BFFF"/>
+      <path d="M18,428 C28,436 42,436 48,428 C54,420 50,411 42,415 C36,418 33,425 40,427" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12,422 C4,412 4,398 12,392 C20,386 29,390 25,398 C22,404 15,407 13,400" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- BOTTOM-RIGHT corner -->
+      <path d="M288,422 L294,428 L288,434 L282,428 Z" fill="#00BFFF"/>
+      <path d="M282,428 C272,436 258,436 252,428 C246,420 250,411 258,415 C264,418 267,425 260,427" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M288,422 C296,412 296,398 288,392 C280,386 271,390 275,398 C278,404 285,407 287,400" fill="none" stroke="#00BFFF" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
     <div class="about-founder-wrap">
       <div class="about-founder-photo">
         <div class="about-founder-photo-oval">
