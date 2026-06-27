@@ -31,7 +31,7 @@
     body { padding-top: 102px; }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 68px; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-    .brand-logo { height: 46px; width: auto; display: block; animation: logoFloat 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite; transition: transform .3s; border-radius: 50%; }
+    .brand-logo { height: 46px; width: auto; display: block; animation: brandZoom 3s ease-in-out infinite, logoGlow 3s ease-in-out infinite; transition: transform .3s; border-radius: 50%; }
     .brand:hover .brand-logo { transform: scale(1.12) rotate(8deg); }
     @keyframes logoFloat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.10)} }
     @keyframes logoGlow { 0%,100%{filter:drop-shadow(0 0 4px rgba(200,135,30,.40)) drop-shadow(0 0 0px rgba(255,215,0,0))} 50%{filter:drop-shadow(0 0 10px rgba(200,135,30,.80)) drop-shadow(0 0 18px rgba(255,215,0,.35))} }
