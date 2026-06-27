@@ -257,7 +257,16 @@
     .foot-contact a:hover { color: #fbbf24; }
     .foot-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 18px 24px; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
     .foot-copy { color: rgba(255,255,255,.22); font-size: 12px; }
-    .foot-tagline { color: rgba(255,255,255,.22); font-size: 11px; font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: .08em; font-weight: 500; opacity: .7; }
+    .foot-tagline { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.22); font-size: 11px; font-style: italic; font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: .08em; font-weight: 500; opacity: .7; }
+    .foot-sig { height: 30px; width: auto; filter: invert(1); mix-blend-mode: screen; opacity: .65; flex-shrink: 0; }
+    .foot-designer { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+    .foot-designer-phone { color: rgba(255,255,255,.18); font-size: 11px; font-family: 'Cormorant Garamond', Georgia, serif; letter-spacing: .06em; font-style: italic; font-weight: 500; }
+    @media (max-width: 768px) {
+      .foot-designer { flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; width: 100%; }
+      .foot-tagline { opacity: .55; }
+      .foot-designer-phone { font-size: 11px; opacity: .55; }
+      .foot-sig { height: 24px; }
+    }
 
     /* ── FLOATING MAP ── */
     .map-float { position: fixed; bottom: 108px; right: 14px; width: 86px; height: 86px; z-index: 1001; text-decoration: none; display: flex; align-items: center; justify-content: center; }
@@ -462,7 +471,10 @@
   </div>
   <div class="foot-bottom">
     <div class="foot-copy">© 2025 Arihant Garments · All rights reserved · 155-B Rabindra Sarani, Kolkata</div>
-    <div class="foot-tagline">Designed by Binoy Krishna Halder</div>
+    <div class="foot-designer">
+      <div class="foot-tagline"><img src="sig.png" class="foot-sig" alt=""/>Designed by Binoy Krishna Halder</div>
+      <div class="foot-designer-phone">+91 82828 20213</div>
+    </div>
   </div>
 </footer>
 
