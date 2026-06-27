@@ -199,12 +199,32 @@
     .mbtn-enq { background: #0f0e47; color: #fff; }
     .product-card { cursor: pointer; }
 
-    /* Stack on small mobile */
+    /* Stack on small mobile — portrait */
     @media (max-width: 540px) {
-      .modal-box { flex-direction: column; max-height: 92vh; overflow-y: auto; }
-      .modal-img-wrap { flex: none; width: 100%; min-height: 260px; border-radius: 18px 18px 0 0; }
-      .modal-info { border-radius: 0 0 18px 18px; padding: 20px 18px 22px; }
+      .modal-overlay { padding: 10px; align-items: flex-start; overflow-y: auto; }
+      .modal-box { flex-direction: column; max-height: unset; overflow-y: auto; overflow-x: hidden; }
+      .modal-img-wrap { flex: none; width: 100%; height: 260px; min-height: unset; border-radius: 18px 18px 0 0; }
+      .modal-slide { height: 260px; min-height: unset; }
+      .modal-slide img { object-fit: cover; }
+      .modal-info { border-radius: 0 0 18px 18px; padding: 16px 14px 18px; justify-content: flex-start; }
       .modal-action-btns { flex-direction: row; }
+    }
+
+    /* Landscape mobile fix — only when actually in landscape */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .modal-overlay { padding: 6px; }
+      .modal-box { flex-direction: row; max-height: 98vh; height: 98vh; overflow: hidden; border-radius: 14px; }
+      .modal-img-wrap { flex: 0 0 48%; min-height: unset; height: 100%; border-radius: 12px 0 0 12px; }
+      .modal-slide { height: 100%; min-height: unset; }
+      .modal-slide img { object-fit: contain; }
+      .modal-info { padding: 10px 12px; overflow-y: auto; max-height: 98vh; justify-content: flex-start; border-radius: 0 12px 12px 0; }
+      .modal-prod-label { font-size: 16px; margin-bottom: 3px; }
+      .modal-prod-sub { font-size: 11px; margin-bottom: 8px; }
+      .modal-img-count { margin-bottom: 8px; }
+      .modal-features { margin-bottom: 10px; gap: 3px; }
+      .modal-features li { font-size: 11px; }
+      .modal-action-btns { flex-direction: row; }
+      .modal-action-btns a { padding: 8px 6px; font-size: 12px; }
     }
 
     /* ── FOOTER ── */
